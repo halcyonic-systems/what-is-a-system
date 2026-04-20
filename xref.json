@@ -1,0 +1,314 @@
+{"Verso.Genre.Manual.section":
+ {"title": "Sections or chapters of the manual",
+  "description": null,
+  "contents":
+  {"A-Formal-Systems-Ontology-and-Its-Open-Frontier--Three-Definitions___-One-Tradition--Mobus___-The-8-Tuple":
+   [{"id":
+     "A-Formal-Systems-Ontology-and-Its-Open-Frontier--Three-Definitions___-One-Tradition--Mobus___-The-8-Tuple",
+     "data":
+     {"title": "Mobus: The 8-Tuple",
+      "shortTitle": null,
+      "sectionNum": "1.3.",
+      "context":
+      [{"title": "A Formal Systems Ontology and Its Open Frontier",
+        "shortTitle": null,
+        "number": null},
+       {"title": "Three Definitions, One Tradition",
+        "shortTitle": null,
+        "number": "1"},
+       {"title": "Mobus: The 8-Tuple", "shortTitle": null, "number": "3"}]},
+     "address": "/Three-Definitions___-One-Tradition/"}],
+   "A-Formal-Systems-Ontology-and-Its-Open-Frontier--Three-Definitions___-One-Tradition--Klir___-S-___-_LPAR_T___-R_RPAR_":
+   [{"id":
+     "A-Formal-Systems-Ontology-and-Its-Open-Frontier--Three-Definitions___-One-Tradition--Klir___-S-___-_LPAR_T___-R_RPAR_",
+     "data":
+     {"title": "Klir: S = (T, R)",
+      "shortTitle": null,
+      "sectionNum": "1.1.",
+      "context":
+      [{"title": "A Formal Systems Ontology and Its Open Frontier",
+        "shortTitle": null,
+        "number": null},
+       {"title": "Three Definitions, One Tradition",
+        "shortTitle": null,
+        "number": "1"},
+       {"title": "Klir: S = (T, R)", "shortTitle": null, "number": "1"}]},
+     "address": "/Three-Definitions___-One-Tradition/"}],
+   "A-Formal-Systems-Ontology-and-Its-Open-Frontier--Three-Definitions___-One-Tradition--Bunge___-_LANGLE_C___-E___-S_RANGLE_":
+   [{"id":
+     "A-Formal-Systems-Ontology-and-Its-Open-Frontier--Three-Definitions___-One-Tradition--Bunge___-_LANGLE_C___-E___-S_RANGLE_",
+     "data":
+     {"title": "Bunge: ⟨C, E, S⟩",
+      "shortTitle": null,
+      "sectionNum": "1.2.",
+      "context":
+      [{"title": "A Formal Systems Ontology and Its Open Frontier",
+        "shortTitle": null,
+        "number": null},
+       {"title": "Three Definitions, One Tradition",
+        "shortTitle": null,
+        "number": "1"},
+       {"title": "Bunge: ⟨C, E, S⟩", "shortTitle": null, "number": "2"}]},
+     "address": "/Three-Definitions___-One-Tradition/"}],
+   "A-Formal-Systems-Ontology-and-Its-Open-Frontier--Three-Definitions___-One-Tradition":
+   [{"id":
+     "A-Formal-Systems-Ontology-and-Its-Open-Frontier--Three-Definitions___-One-Tradition",
+     "data":
+     {"title": "Three Definitions, One Tradition",
+      "shortTitle": null,
+      "sectionNum": "1.",
+      "context":
+      [{"title": "A Formal Systems Ontology and Its Open Frontier",
+        "shortTitle": null,
+        "number": null},
+       {"title": "Three Definitions, One Tradition",
+        "shortTitle": null,
+        "number": "1"}]},
+     "address": "/Three-Definitions___-One-Tradition/"}],
+   "A-Formal-Systems-Ontology-and-Its-Open-Frontier--The-Thermostat-___-Your-Example___-Three-Frameworks--The-Triangle-on-This-Instance":
+   [{"id":
+     "A-Formal-Systems-Ontology-and-Its-Open-Frontier--The-Thermostat-___-Your-Example___-Three-Frameworks--The-Triangle-on-This-Instance",
+     "data":
+     {"title": "The Triangle on This Instance",
+      "shortTitle": null,
+      "sectionNum": "3.4.",
+      "context":
+      [{"title": "A Formal Systems Ontology and Its Open Frontier",
+        "shortTitle": null,
+        "number": null},
+       {"title": "The Thermostat — Your Example, Three Frameworks",
+        "shortTitle": null,
+        "number": "3"},
+       {"title": "The Triangle on This Instance",
+        "shortTitle": null,
+        "number": "4"}]},
+     "address": "/The-Thermostat-___-Your-Example___-Three-Frameworks/"}],
+   "A-Formal-Systems-Ontology-and-Its-Open-Frontier--The-Thermostat-___-Your-Example___-Three-Frameworks--Entities-and-Action":
+   [{"id":
+     "A-Formal-Systems-Ontology-and-Its-Open-Frontier--The-Thermostat-___-Your-Example___-Three-Frameworks--Entities-and-Action",
+     "data":
+     {"title": "Entities and Action",
+      "shortTitle": null,
+      "sectionNum": "3.1.",
+      "context":
+      [{"title": "A Formal Systems Ontology and Its Open Frontier",
+        "shortTitle": null,
+        "number": null},
+       {"title": "The Thermostat — Your Example, Three Frameworks",
+        "shortTitle": null,
+        "number": "3"},
+       {"title": "Entities and Action", "shortTitle": null, "number": "1"}]},
+     "address": "/The-Thermostat-___-Your-Example___-Three-Frameworks/"}],
+   "A-Formal-Systems-Ontology-and-Its-Open-Frontier--The-Thermostat-___-Your-Example___-Three-Frameworks--Bunge-and-Klir-___-By-Projection":
+   [{"id":
+     "A-Formal-Systems-Ontology-and-Its-Open-Frontier--The-Thermostat-___-Your-Example___-Three-Frameworks--Bunge-and-Klir-___-By-Projection",
+     "data":
+     {"title": "Bunge and Klir — By Projection",
+      "shortTitle": null,
+      "sectionNum": "3.3.",
+      "context":
+      [{"title": "A Formal Systems Ontology and Its Open Frontier",
+        "shortTitle": null,
+        "number": null},
+       {"title": "The Thermostat — Your Example, Three Frameworks",
+        "shortTitle": null,
+        "number": "3"},
+       {"title": "Bunge and Klir — By Projection",
+        "shortTitle": null,
+        "number": "3"}]},
+     "address": "/The-Thermostat-___-Your-Example___-Three-Frameworks/"}],
+   "A-Formal-Systems-Ontology-and-Its-Open-Frontier--The-Thermostat-___-Your-Example___-Three-Frameworks--Building-the-Mobus-System":
+   [{"id":
+     "A-Formal-Systems-Ontology-and-Its-Open-Frontier--The-Thermostat-___-Your-Example___-Three-Frameworks--Building-the-Mobus-System",
+     "data":
+     {"title": "Building the Mobus System",
+      "shortTitle": null,
+      "sectionNum": "3.2.",
+      "context":
+      [{"title": "A Formal Systems Ontology and Its Open Frontier",
+        "shortTitle": null,
+        "number": null},
+       {"title": "The Thermostat — Your Example, Three Frameworks",
+        "shortTitle": null,
+        "number": "3"},
+       {"title": "Building the Mobus System",
+        "shortTitle": null,
+        "number": "2"}]},
+     "address": "/The-Thermostat-___-Your-Example___-Three-Frameworks/"}],
+   "A-Formal-Systems-Ontology-and-Its-Open-Frontier--The-Thermostat-___-Your-Example___-Three-Frameworks":
+   [{"id":
+     "A-Formal-Systems-Ontology-and-Its-Open-Frontier--The-Thermostat-___-Your-Example___-Three-Frameworks",
+     "data":
+     {"title": "The Thermostat — Your Example, Three Frameworks",
+      "shortTitle": null,
+      "sectionNum": "3.",
+      "context":
+      [{"title": "A Formal Systems Ontology and Its Open Frontier",
+        "shortTitle": null,
+        "number": null},
+       {"title": "The Thermostat — Your Example, Three Frameworks",
+        "shortTitle": null,
+        "number": "3"}]},
+     "address": "/The-Thermostat-___-Your-Example___-Three-Frameworks/"}],
+   "A-Formal-Systems-Ontology-and-Its-Open-Frontier--The-Open-Frontier--Where-the-Tree-Grows":
+   [{"id":
+     "A-Formal-Systems-Ontology-and-Its-Open-Frontier--The-Open-Frontier--Where-the-Tree-Grows",
+     "data":
+     {"title": "Where the Tree Grows",
+      "shortTitle": null,
+      "sectionNum": "4.4.",
+      "context":
+      [{"title": "A Formal Systems Ontology and Its Open Frontier",
+        "shortTitle": null,
+        "number": null},
+       {"title": "The Open Frontier", "shortTitle": null, "number": "4"},
+       {"title": "Where the Tree Grows", "shortTitle": null, "number": "4"}]},
+     "address": "/The-Open-Frontier/"}],
+   "A-Formal-Systems-Ontology-and-Its-Open-Frontier--The-Open-Frontier--What-the-Formalization-Cannot-Yet-Express":
+   [{"id":
+     "A-Formal-Systems-Ontology-and-Its-Open-Frontier--The-Open-Frontier--What-the-Formalization-Cannot-Yet-Express",
+     "data":
+     {"title": "What the Formalization Cannot Yet Express",
+      "shortTitle": null,
+      "sectionNum": "4.1.",
+      "context":
+      [{"title": "A Formal Systems Ontology and Its Open Frontier",
+        "shortTitle": null,
+        "number": null},
+       {"title": "The Open Frontier", "shortTitle": null, "number": "4"},
+       {"title": "What the Formalization Cannot Yet Express",
+        "shortTitle": null,
+        "number": "1"}]},
+     "address": "/The-Open-Frontier/"}],
+   "A-Formal-Systems-Ontology-and-Its-Open-Frontier--The-Open-Frontier--What-Your-Framework-Provides":
+   [{"id":
+     "A-Formal-Systems-Ontology-and-Its-Open-Frontier--The-Open-Frontier--What-Your-Framework-Provides",
+     "data":
+     {"title": "What Your Framework Provides",
+      "shortTitle": null,
+      "sectionNum": "4.2.",
+      "context":
+      [{"title": "A Formal Systems Ontology and Its Open Frontier",
+        "shortTitle": null,
+        "number": null},
+       {"title": "The Open Frontier", "shortTitle": null, "number": "4"},
+       {"title": "What Your Framework Provides",
+        "shortTitle": null,
+        "number": "2"}]},
+     "address": "/The-Open-Frontier/"}],
+   "A-Formal-Systems-Ontology-and-Its-Open-Frontier--The-Open-Frontier--The-Categorification-Question":
+   [{"id":
+     "A-Formal-Systems-Ontology-and-Its-Open-Frontier--The-Open-Frontier--The-Categorification-Question",
+     "data":
+     {"title": "The Categorification Question",
+      "shortTitle": null,
+      "sectionNum": "4.3.",
+      "context":
+      [{"title": "A Formal Systems Ontology and Its Open Frontier",
+        "shortTitle": null,
+        "number": null},
+       {"title": "The Open Frontier", "shortTitle": null, "number": "4"},
+       {"title": "The Categorification Question",
+        "shortTitle": null,
+        "number": "3"}]},
+     "address": "/The-Open-Frontier/"}],
+   "A-Formal-Systems-Ontology-and-Its-Open-Frontier--The-Open-Frontier":
+   [{"id": "A-Formal-Systems-Ontology-and-Its-Open-Frontier--The-Open-Frontier",
+     "data":
+     {"title": "The Open Frontier",
+      "shortTitle": null,
+      "sectionNum": "4.",
+      "context":
+      [{"title": "A Formal Systems Ontology and Its Open Frontier",
+        "shortTitle": null,
+        "number": null},
+       {"title": "The Open Frontier", "shortTitle": null, "number": "4"}]},
+     "address": "/The-Open-Frontier/"}],
+   "A-Formal-Systems-Ontology-and-Its-Open-Frontier--The-Commuting-Triangle--The-Theorem":
+   [{"id":
+     "A-Formal-Systems-Ontology-and-Its-Open-Frontier--The-Commuting-Triangle--The-Theorem",
+     "data":
+     {"title": "The Theorem",
+      "shortTitle": null,
+      "sectionNum": "2.2.",
+      "context":
+      [{"title": "A Formal Systems Ontology and Its Open Frontier",
+        "shortTitle": null,
+        "number": null},
+       {"title": "The Commuting Triangle", "shortTitle": null, "number": "2"},
+       {"title": "The Theorem", "shortTitle": null, "number": "2"}]},
+     "address": "/The-Commuting-Triangle/"}],
+   "A-Formal-Systems-Ontology-and-Its-Open-Frontier--The-Commuting-Triangle--The-Projection-Maps":
+   [{"id":
+     "A-Formal-Systems-Ontology-and-Its-Open-Frontier--The-Commuting-Triangle--The-Projection-Maps",
+     "data":
+     {"title": "The Projection Maps",
+      "shortTitle": null,
+      "sectionNum": "2.1.",
+      "context":
+      [{"title": "A Formal Systems Ontology and Its Open Frontier",
+        "shortTitle": null,
+        "number": null},
+       {"title": "The Commuting Triangle", "shortTitle": null, "number": "2"},
+       {"title": "The Projection Maps", "shortTitle": null, "number": "1"}]},
+     "address": "/The-Commuting-Triangle/"}],
+   "A-Formal-Systems-Ontology-and-Its-Open-Frontier--The-Commuting-Triangle--Information-Loss":
+   [{"id":
+     "A-Formal-Systems-Ontology-and-Its-Open-Frontier--The-Commuting-Triangle--Information-Loss",
+     "data":
+     {"title": "Information Loss",
+      "shortTitle": null,
+      "sectionNum": "2.3.",
+      "context":
+      [{"title": "A Formal Systems Ontology and Its Open Frontier",
+        "shortTitle": null,
+        "number": null},
+       {"title": "The Commuting Triangle", "shortTitle": null, "number": "2"},
+       {"title": "Information Loss", "shortTitle": null, "number": "3"}]},
+     "address": "/The-Commuting-Triangle/"}],
+   "A-Formal-Systems-Ontology-and-Its-Open-Frontier--The-Commuting-Triangle":
+   [{"id":
+     "A-Formal-Systems-Ontology-and-Its-Open-Frontier--The-Commuting-Triangle",
+     "data":
+     {"title": "The Commuting Triangle",
+      "shortTitle": null,
+      "sectionNum": "2.",
+      "context":
+      [{"title": "A Formal Systems Ontology and Its Open Frontier",
+        "shortTitle": null,
+        "number": null},
+       {"title": "The Commuting Triangle", "shortTitle": null, "number": "2"}]},
+     "address": "/The-Commuting-Triangle/"}],
+   "A-Formal-Systems-Ontology-and-Its-Open-Frontier":
+   [{"id": "A-Formal-Systems-Ontology-and-Its-Open-Frontier",
+     "data":
+     {"title": "A Formal Systems Ontology and Its Open Frontier",
+      "shortTitle": null,
+      "sectionNum": "",
+      "context":
+      [{"title": "A Formal Systems Ontology and Its Open Frontier",
+        "shortTitle": null,
+        "number": null}]},
+     "address": "/"}]}},
+ "Verso.Genre.Manual.doc.tech":
+ {"title": "Terminology",
+  "description": "Definitions of technical terms",
+  "contents": {}},
+ "Verso.Genre.Manual.doc.tactic.conv":
+ {"title": "Conversion Tactics",
+  "description": "Tactics for performing targeted rewriting of subterms",
+  "contents": {}},
+ "Verso.Genre.Manual.doc.tactic":
+ {"title": "Tactic Documentation",
+  "description": "Detailed descriptions of tactics",
+  "contents": {}},
+ "Verso.Genre.Manual.doc.suggestion":
+ {"title": "Lean constant suggestions",
+  "description": "Search suggestions for Lean constants",
+  "contents": {}},
+ "Verso.Genre.Manual.doc.option":
+ {"title": "Compiler options", "description": null, "contents": {}},
+ "Verso.Genre.Manual.doc":
+ {"title": "Lean constant reference",
+  "description": "Documentation for Lean constants",
+  "contents": {}}}

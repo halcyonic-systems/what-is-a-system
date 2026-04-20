@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      (function(){
+  const {protocol:proto, host:hostName, pathname:path, search:srch, hash:hsh} = window.location;
+  if (!(path.endsWith("/") || path.endsWith(".html"))) {
+    window.location.replace(`${proto}//${hostName}${path}/${srch}${hsh}`);
+  }
+})()</script>
+    <base href="./../"><meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>Three Definitions, One Tradition</title><link rel="stylesheet" href="book.css">
+    <link rel="stylesheet" href="verso-vars.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js" integrity="sha384-zbcZAIxlvJtNE3Dp5nxLXdXtXyxwOdnILY1TDPVmKFhl4r4nSUG1r8bcFXGVa4Te" crossorigin="anonymous"></script>
+    <script src="-verso-search/elasticlunr.min.js"></script>
+    <script src="-verso-search/fuzzysort.min.js"></script>
+    <script src="-verso-search/searchIndex.js"></script>
+    <script type="module" src="-verso-search/search-init.js"></script>
+    <link rel="stylesheet" href="-verso-search/search-box.css">
+    <link rel="stylesheet" href="-verso-search/search-highlight.css">
+    <link rel="stylesheet" href="-verso-search/domain-display.css">
+    <script src="-verso-data/popper.min.js"></script>
+    <script src="-verso-data/katex/math.js"></script>
+    <script src="-verso-data/tippy-bundle.umd.min.js"></script>
+    <script src="-verso-data/katex/katex.js"></script>
+    <link rel="stylesheet" href="-verso-data/tippy-border.css">
+    <link rel="stylesheet" href="-verso-data/katex/katex.css">
+    <style>
+
+.hl.lean {
+  white-space: pre;
+  font-weight: normal;
+  font-style: normal;
+  font-size: inherit;
+}
+
+.hl.lean .keyword {
+  color: var(--verso-code-keyword-color,);
+  font-weight: var(--verso-code-keyword-weight, bold);
+  font-style: var(--verso-code-keyword-style, normal);
+  font-family: var(--verso-code-keyword-font-family,);
+}
+
+.hl.lean .const {
+  color: var(--verso-code-const-color,);
+  font-weight: var(--verso-code-const-weight, normal);
+  font-style: var(--verso-code-const-style, normal);
+  font-family: var(--verso-code-const-font-family,);
+}
+
+.hl.lean .var {
+  color: var(--verso-code-var-color,);
+  font-weight: var(--verso-code-var-weight, normal);
+  font-style: var(--verso-code-var-style, italic);
+  font-family: var(--verso-code-var-font-family,);
+
+  position: relative;
+}
+
+.hl.lean .literal, .hl.lean .unknown {
+  color: var(--verso-code-color,);
+  font-weight: normal;
+  font-style: normal;
+  font-family: var(--verso-code-font-family,);
+}
+
+.hover-container {
+  width: 0;
+  height: 0;
+  position: relative;
+  display: inline;
+}
+
+.hl.lean a {
+  color: inherit;
+  text-decoration: currentcolor underline dotted;
+}
+
+.hl.lean a:hover {
+  text-decoration: currentcolor underline solid;
+}
+
+.hl.lean .hover-info {
+  white-space: normal;
+}
+
+.hl.lean .token .hover-info {
+  display: none;
+  position: absolute;
+  background-color: #e5e5e5;
+  border: 1px solid black;
+  padding: 0.5rem;
+  z-index: 300;
+}
+
+.hl.lean .hover-info.messages {
+  max-height: 10rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-gutter: stable;
+  padding: 0 0.5rem 0 0;
+  display: block;
+}
+
+.hl.lean .hover-info code {
+  white-space: pre-wrap;
+  background: none;
+  color: black;
+}
+
+.hl.lean .hover-info.messages > code {
+  padding: 0.5rem;
+  display: block;
+  width: fit-content;
+}
+
+.hl.lean .hover-info.messages > code:only-child {
+  margin: 0;
+}
+
+.hl.lean .hover-info.messages > code {
+  margin: 0.1rem;
+}
+
+.hl.lean .hover-info.messages > code:not(:first-child) {
+  margin-top: 0rem;
+}
+
+.hl.lean {
+}
+
+.hl.lean.block {
+  display: block;
+}
+
+.hl.lean.inline {
+  display: inline;
+  white-space: pre-wrap;
+}
+
+.hl.lean * {
+}
+
+.hl.lean .token {
+  transition: all 0.25s; /* Slight fade for highlights */
+}
+
+@media (hover: hover) {
+  .hl.lean .token.binding-hl, .hl.lean .literal.string:hover, .hl.lean .token.typed:hover {
+    background-color: #eee;
+    border-radius: 2px;
+    transition: none;
+  }
+}
+
+
+.hl.lean .has-info .token:not(.tactic-state):not(.tactic-state *), .hl.lean .has-info .inter-text:not(.tactic-state):not(.tactic-state *) {
+  text-decoration-style: wavy;
+  text-decoration-line: underline;
+  text-decoration-thickness: from-font;
+  text-decoration-skip-ink: none;
+}
+
+.hl.lean .has-info .hover-info {
+  display: none;
+  position: absolute;
+  transform: translate(0.25rem, 0.3rem);
+  border: 1px solid black;
+  padding: 0.5rem;
+  z-index: 400;
+  text-align: left;
+}
+
+.hl.lean .has-info.error :not(.tactic-state):not(.tactic-state *){
+  text-decoration-color: red;
+}
+
+@media (hover: hover) {
+  .hl.lean .has-info.error:hover {
+    background-color: #ffb3b3;
+  }
+}
+
+.hl.lean .hover-info.messages > code.error {
+  background-color: #e5e5e5;
+  border-left: 0.2rem solid #ffb3b3;
+}
+
+.tippy-box[data-theme~='error'] .hl.lean .hover-info.messages > code.error {
+  background: none;
+  border: none;
+}
+
+.error .verso-message, .error .verso-message .token, .error .verso-message label {
+  color: var(--verso-error-color);
+}
+
+.error .verso-message .case-label:has(input[type="checkbox"])::before {
+  background-color: var(--verso-error-color) !important;
+}
+
+.hl.lean .has-info.warning :not(.tactic-state):not(.tactic-state *) {
+  text-decoration-color: var(--verso-warning-indicator-color);
+}
+
+@media (hover: hover) {
+  .hl.lean .has-info.warning:hover {
+    background-color:var(--verso-warning-color);
+  }
+}
+
+.hl.lean .hover-info.messages > code.warning {
+  background-color: var(--verso-warning-color);
+}
+
+.lean-output {
+  border-left: 0.2em solid transparent;
+  padding: 0 0 0 0.5em;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.lean-output.error {
+  border-color: var(--verso-error-indicator-color);
+}
+
+.lean-output.information {
+  border-color: var(--verso-info-indicator-color);
+}
+
+.lean-output.warning {
+  border-color: var(--verso-warning-indicator-color);
+}
+
+.hl.lean .hover-info.messages > code.error {
+  background-color: #e5e5e5;
+  border-left: 0.2rem solid var(--verso-warning-color);
+}
+
+.tippy-box[data-theme~='warning'] .hl.lean .hover-info.messages > code.warning {
+  background: none;
+  border: none;
+}
+
+
+.hl.lean .has-info.information :not(.tactic-state):not(.tactic-state *) {
+  text-decoration-color: var(--verso-info-indicator-color, blue);
+}
+
+@media (hover: hover) {
+  .hl.lean .has-info.information:hover {
+    background-color: #4777ff;
+  }
+}
+
+
+.hl.lean .hover-info.messages > code.information {
+  background-color: #e5e5e5;
+  border-left: 0.2rem solid #4777ff;
+}
+
+.tippy-box[data-theme~='info'] .hl.lean .hover-info.messages > code.information {
+  background: none;
+  border: none;
+}
+
+.hl.lean div.docstring {
+  font-family: var(--verso-text-font-family, sans-serif);
+  white-space: normal;
+  max-width: calc(min(40rem, 90vw));
+  width: max-content;
+}
+
+.hl.lean div.docstring > :last-child {
+  margin-bottom: 0;
+}
+
+.hl.lean div.docstring > :first-child {
+  margin-top: 0;
+}
+
+.hl.lean .hover-info .sep {
+  display: block;
+  width: auto;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding: 0;
+  height: 1px;
+  border-top: 1px solid #ccc;
+}
+
+.hl.lean code {
+  font-family: var(--verso-code-font-family);
+}
+
+.hl.lean .tactic-state {
+  display: none;
+  position: relative;
+  width: fit-content;
+  border: 1px solid #888888;
+  border-radius: 0.1rem;
+  padding: 0.5rem;
+  font-family: sans-serif;
+  background-color: #ffffff;
+}
+
+.hl.lean.popup .tactic-state {
+  position: static;
+  display: block;
+  width: auto;
+  border: none;
+  padding: 0.5rem;
+  font-family: sans-serif;
+  background-color: #ffffff;
+}
+
+
+.hl.lean .tactic {
+  position: relative;
+  display: inline;
+  vertical-align: top;
+  /* Without these, mobile Safari will start making font sizes inconsistent when its text size adjustment feature is triggered.*/
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+.hl.lean .tactic:has(.tactic-toggle:checked) {
+  display: inline-grid;
+  grid-template-columns: 1fr;
+}
+
+.hl.lean .tactic-toggle:checked ~ .tactic-state {
+  display: inline-block;
+  vertical-align: top;
+  grid-row: 2;
+  justify-self: start;
+}
+
+.hl.lean .tactic > label {
+  position: relative;
+  grid-row: 1;
+  display: inline;
+}
+
+@media (hover: hover) {
+  .hl.lean .tactic:has(.tactic-toggle:not(:checked)) > label:hover {
+    background-color: #eeeeee;
+  }
+}
+
+.hl.lean .tactic-toggle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  height: 0;
+  width: 0;
+  z-index: -10;
+}
+
+.hl.lean .tactic > label::after {
+  content: "";
+  border: 1px solid #bbbbbb;
+  /* These need to be em, not rem, to scale with the font */
+  border-radius: 1em;
+  height: 0.25em;
+  vertical-align: middle;
+  width: 0.6em;
+  margin-left: 0.1em;
+  margin-right: 0.1em;
+  display: inline-block;
+  transition: all 0.5s;
+}
+
+/*
+@media (hover: hover) {
+  .hl.lean .tactic > label:hover::after {
+    border: 1px solid #aaaaaa;
+    background-color: #aaaaaa;
+    transition: all 0.5s;
+  }
+}
+*/
+
+.hl.lean .tactic > label:has(+ .tactic-toggle:checked)::after {
+  border: 1px solid #999999;
+  background-color: #999999;
+  transition: all 0.5s;
+}
+
+.hl.lean .tactic-state .goal + .goal {
+  margin-top: 1.5em;
+}
+
+/*
+Some CSS frameworks customize details/summary in ways not compatible with Verso's output.
+*/
+
+.hl.lean details {
+  display: block !important;
+  margin: 0;
+}
+
+.hl.lean details summary {
+  display: list-item !important;
+  margin: 0;
+}
+
+.hl.lean details summary:focus {
+  outline: none;
+  outline-offset: none;
+  color: inherit;
+}
+
+.hl.lean ul > li {
+  margin-bottom: 0;
+}
+
+.hl.lean details summary::marker {
+  display: inline !important;
+}
+
+.hl.lean details > summary:first-of-type {
+  list-style-type: disclosure-closed;
+  list-style-position: inside;
+}
+
+.hl.lean details[open] > summary:first-of-type {
+  list-style-type: disclosure-open;
+}
+
+.hl.lean details summary::before, .hl.lean details summary::after {
+  content: "" !important;
+  background: none;
+  display: none;
+}
+
+.hl.lean .tactic-state summary {
+  /* These need to be em, not rem, to scale with the font */
+  margin-left: -0.5em;
+}
+
+.hl.lean .tactic-state details {
+  /* These need to be em, not rem, to scale with the font */
+  padding-left: 0.5em;
+}
+
+.hl.lean .case-label {
+  display: block;
+  position: relative;
+}
+
+.hl.lean .case-label input[type="checkbox"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  height: 0;
+  width: 0;
+  z-index: -10;
+}
+
+.hl.lean .case-label:has(input[type="checkbox"])::before {
+  display: inline-block;
+  background-color: black;
+  content: ' ';
+  transition: ease 0.2s;
+  margin-right: 0.7em;
+  clip-path: polygon(100% 0, 0 0, 50% 100%);
+  width: 0.6em;
+  height: 0.6em;
+  vertical-align: middle;
+}
+
+.hl.lean .case-label:has(input[type="checkbox"]:not(:checked))::before {
+  transform: rotate(-90deg);
+}
+
+.hl.lean .case-label:has(input[type="checkbox"]) {
+
+}
+
+.hl.lean .case-label:has(input[type="checkbox"]:checked) {
+
+}
+
+
+.hl.lean .labeled-case > :not(:first-child) {
+  max-height: 0px;
+  display: block;
+  overflow: hidden;
+  transition: max-height 0.1s ease-in;
+  /* These need to be em, not rem, to scale with the font */
+  margin-left: 0.5em;
+  margin-top: 0.1em;
+}
+
+.hl.lean .labeled-case:has(.case-label input[type="checkbox"]:checked) > :not(:first-child) {
+  max-height: 100%;
+}
+
+
+.hl.lean .goal-name::before {
+  font-style: normal;
+  content: "case ";
+}
+
+.hl.lean .goal-name {
+  font-style: italic;
+  font-family: var(--verso-code-font-family);
+  color: inherit;
+}
+
+.hl.lean .hypotheses {
+  display: table;
+}
+
+.hl.lean .hypothesis {
+  display: table-row;
+}
+
+.hl.lean .hypothesis > * {
+  display: table-cell;
+}
+
+
+.hl.lean .hypotheses .colon {
+  text-align: center;
+  /* This needs to be em, not rem, to scale with the font */
+  min-width: 1em;
+}
+
+.hl.lean .hypotheses .name {
+  text-align: right;
+}
+
+.hl.lean .hypotheses .name,
+.hl.lean .hypotheses .type,
+.hl.lean .conclusion .type {
+  font-family: var(--verso-code-font-family);
+}
+
+.tippy-box {
+  /* Without these, mobile Safari will start making font sizes inconsistent when its text size adjustment feature is triggered.*/
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+
+}
+
+.tippy-box[data-theme~='lean'] {
+  background-color: #e5e5e5;
+  color: black;
+  border: 1px solid black;
+}
+.tippy-box[data-theme~='lean'][data-placement^='top'] > .tippy-arrow::before {
+  border-top-color: #e5e5e5;
+}
+.tippy-box[data-theme~='lean'][data-placement^='bottom'] > .tippy-arrow::before {
+  border-bottom-color: #e5e5e5;
+}
+.tippy-box[data-theme~='lean'][data-placement^='left'] > .tippy-arrow::before {
+  border-left-color: #e5e5e5;
+}
+.tippy-box[data-theme~='lean'][data-placement^='right'] > .tippy-arrow::before {
+  border-right-color: #e5e5e5;
+}
+
+.tippy-box[data-theme~='message'][data-placement^='top'] > .tippy-arrow::before {
+  border-top-color: #e5e5e5;
+  border-width: 11px 11px 0;
+}
+.tippy-box[data-theme~='message'][data-placement^='top'] > .tippy-arrow::after {
+  bottom: -11px;
+  border-width: 11px 11px 0;
+}
+.tippy-box[data-theme~='message'][data-placement^='bottom'] > .tippy-arrow::before {
+  border-width: 0 11px 11px;
+}
+.tippy-box[data-theme~='message'][data-placement^='bottom'] > .tippy-arrow::after {
+  top: -11px;
+  border-width: 0 11px 11px;
+}
+.tippy-box[data-theme~='message'][data-placement^='left'] > .tippy-arrow::before {
+  border-left-color: #e5e5e5;
+  border-width: 11px 0 11px 11px;
+}
+.tippy-box[data-theme~='message'][data-placement^='left'] > .tippy-arrow::after {
+  right: -11px;
+  border-width: 11px 0 11px 11px;
+}
+
+.tippy-box[data-theme~='message'][data-placement^='right'] > .tippy-arrow::before {
+  border-right-color: #e5e5e5;
+  border-width: 11px 11px 11px 0;
+}
+.tippy-box[data-theme~='message'][data-placement^='right'] > .tippy-arrow::after {
+  left: -11px;
+  border-width: 11px 11px 11px 0;
+}
+
+
+
+.tippy-box[data-theme~='warning'] {
+  background-color: #e5e5e5;
+  color: black;
+  border: 3px solid var(--verso-warning-color);
+}
+
+.tippy-box[data-theme~='error'] {
+  background-color: #e5e5e5;
+  color: black;
+  border: 3px solid #f7a7af;
+}
+
+.tippy-box[data-theme~='info'] {
+  background-color: #e5e5e5;
+  color: black;
+  border: 3px solid #99b3c2;
+}
+
+.tippy-box[data-theme~='tactic'] {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+}
+.tippy-box[data-theme~='tactic'][data-placement^='top'] > .tippy-arrow::before {
+  border-top-color: white;
+}
+.tippy-box[data-theme~='tactic'][data-placement^='bottom'] > .tippy-arrow::before {
+  border-bottom-color: white;
+}
+.tippy-box[data-theme~='tactic'][data-placement^='left'] > .tippy-arrow::before {
+  border-left-color: white;
+}
+.tippy-box[data-theme~='tactic'][data-placement^='right'] > .tippy-arrow::before {
+  border-right-color: white;
+}
+
+.extra-doc-links {
+  list-style-type: none;
+  margin-left: 0;
+  padding: 0;
+}
+
+.extra-doc-links > li {
+  display: inline-block;
+}
+
+.extra-doc-links > li:not(:last-child)::after {
+  content: '|';
+  display: inline-block;
+  margin: 0 0.25em;
+}
+
+.verso-message .trace {
+  display: block;
+}
+
+.verso-message .trace > summary::marker {
+  color: var(--verso-text-color);
+}
+
+.verso-message .trace-children {
+  margin: 0;
+  padding: 0;
+}
+
+.verso-message .trace-children > li {
+  list-style-type: none;
+  margin-left: 1.5em;
+}
+
+.verso-message .trace-children > li:not(:has(.trace)) {
+  margin-left: 0;
+}
+
+.verso-message .trace-class {
+  color: color-mix(in srgb, currentColor 70%, transparent);
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+}
+
+.verso-message .text {
+  white-space: pre-wrap;
+}
+
+</style><script>
+      
+window.onload = () => {
+
+    // Don't show hovers inside of closed tactic states
+    function blockedByTactic(elem) {
+      let parent = elem.parentNode;
+      while (parent && "classList" in parent) {
+        if (parent.classList.contains("tactic")) {
+          const toggle = parent.querySelector("input.tactic-toggle");
+          if (toggle) {
+            return !toggle.checked;
+          }
+        }
+        parent = parent.parentNode;
+      }
+      return false;
+    }
+
+    function blockedByTippy(elem) {
+      // Don't show a new hover until the old ones are all closed.
+      // Scoped to the nearest "top-level block" to avoid being O(n) in the size of the document.
+      var block = elem;
+      const topLevel = new Set(["section", "body", "html", "nav", "header"]);
+      while (block.parentNode && !topLevel.has(block.parentNode.nodeName.toLowerCase())) {
+        block = block.parentNode;
+      }
+      for (const child of block.querySelectorAll(".token, .has-info")) {
+        if (child._tippy && child._tippy.state.isVisible) { return true };
+      }
+      return false;
+    }
+
+    for (const c of document.querySelectorAll(".hl.lean .token")) {
+        if (c.dataset.binding != "") {
+            c.addEventListener("mouseover", (event) => {
+                if (blockedByTactic(c)) {return;}
+                const context = c.closest(".hl.lean").dataset.leanContext;
+                for (const example of document.querySelectorAll(".hl.lean")) {
+                    if (example.dataset.leanContext == context) {
+                        for (const tok of example.querySelectorAll(".token")) {
+                            if (c.dataset.binding == tok.dataset.binding) {
+                                tok.classList.add("binding-hl");
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        c.addEventListener("mouseout", (event) => {
+            for (const tok of document.querySelectorAll(".hl.lean .token")) {
+                tok.classList.remove("binding-hl");
+            }
+        });
+    }
+    /* Render docstrings */
+    if ('undefined' !== typeof marked) {
+        for (const d of document.querySelectorAll("code.docstring, pre.docstring")) {
+            const str = d.innerText;
+            const html = marked.parse(str);
+            const rendered = document.createElement("div");
+            rendered.classList.add("docstring");
+            rendered.innerHTML = html;
+            d.parentNode.replaceChild(rendered, d);
+        }
+    }
+    // Add hovers
+    let docsJson = "-verso-docs.json";
+    fetch(docsJson).then((resp) => resp.json()).then((versoDocData) => {
+
+      function hideParentTooltips(element) {
+        let parent = element.parentElement;
+        while (parent) {
+          const tippyInstance = parent._tippy;
+          if (tippyInstance) {
+            tippyInstance.hide();
+          }
+          parent = parent.parentElement;
+        }
+      }
+
+
+
+      const defaultTippyProps = {
+        /* DEBUG -- remove the space: * /
+        onHide(any) { return false; },
+        trigger: "click",
+        // */
+        /* theme: "lean", */
+        maxWidth: "none",
+        appendTo: () => document.body,
+        interactive: true,
+        delay: [100, null],
+        /* ignoreAttributes: true, */
+        followCursor: 'initial',
+        onShow(inst) {
+          if (inst.reference.className == 'tactic') {
+
+            const toggle = inst.reference.querySelector("input.tactic-toggle");
+            if (toggle && toggle.checked) {
+              return false;
+            }
+            hideParentTooltips(inst.reference);
+            //if (blockedByTippy(inst.reference)) { return false; }
+
+          } else if (inst.reference.querySelector(".hover-info") || "versoHover" in inst.reference.dataset) {
+            if (blockedByTactic(inst.reference)) { return false };
+            if (blockedByTippy(inst.reference)) { return false; }
+          } else { // Nothing to show here!
+            return false;
+          }
+        },
+        content (tgt) {
+          const content = document.createElement("span");
+          if (tgt.className == 'tactic') {
+            const state = tgt.querySelector(".tactic-state").cloneNode(true);
+            state.style.display = "block";
+            content.appendChild(state);
+            content.style.display = "block";
+            content.className = "hl lean popup";
+          } else {
+            content.className = "hl lean";
+            content.style.display = "block";
+            content.style.maxHeight = "300px";
+            content.style.overflowY = "auto";
+            content.style.overflowX = "hidden";
+            const hoverId = tgt.dataset.versoHover;
+            const hoverInfo = tgt.querySelector(".hover-info");
+            if (hoverId) { // Docstrings from the table
+              // TODO stop doing an implicit conversion from string to number here
+              let data = versoDocData[hoverId];
+              if (data) {
+                const info = document.createElement("span");
+                info.className = "hover-info";
+                info.style.display = "block";
+                info.innerHTML = data;
+                content.appendChild(info);
+                /* Render docstrings - TODO server-side */
+                if ('undefined' !== typeof marked) {
+                    for (const d of content.querySelectorAll("code.docstring, pre.docstring")) {
+                        const str = d.innerText;
+                        const html = marked.parse(str);
+                        const rendered = document.createElement("div");
+                        rendered.classList.add("docstring");
+                        rendered.innerHTML = html;
+                        d.parentNode.replaceChild(rendered, d);
+                    }
+                }
+              } else {
+                content.innerHTML = "Failed to load doc ID: " + hoverId;
+              }
+            } else if (hoverInfo) { // The inline info, still used for compiler messages
+              content.appendChild(hoverInfo.cloneNode(true));
+            }
+            const extraLinks = tgt.parentElement.dataset['versoLinks'];
+            if (extraLinks) {
+              try {
+                const extras = JSON.parse(extraLinks);
+                const links = document.createElement('ul');
+                links.className = 'extra-doc-links';
+                extras.forEach((l) => {
+                  const li = document.createElement('li');
+                  li.innerHTML = "<a href=\"" + l['href'] + "\" title=\"" + l.long + "\">" + l.short + "</a>";
+                  links.appendChild(li);
+                });
+                content.appendChild(links);
+              } catch (error) {
+                console.error(error);
+              }
+            }
+          }
+          return content;
+        }
+      };
+
+
+      document.querySelectorAll('.hl.lean .const.token, .hl.lean .keyword.token, .hl.lean .literal.token, .hl.lean .option.token, .hl.lean .var.token, .hl.lean .typed.token, .hl.lean .level-var, .hl.lean .level-const, .hl.lean .level-op, .hl.lean .sort').forEach(element => {
+        element.setAttribute('data-tippy-theme', 'lean');
+      });
+      document.querySelectorAll('.hl.lean .has-info.warning').forEach(element => {
+        element.setAttribute('data-tippy-theme', 'warning message');
+      });
+      document.querySelectorAll('.hl.lean .has-info.information').forEach(element => {
+        element.setAttribute('data-tippy-theme', 'info message');
+      });
+      document.querySelectorAll('.hl.lean .has-info.error').forEach(element => {
+        element.setAttribute('data-tippy-theme', 'error message');
+      });
+      document.querySelectorAll('.hl.lean .tactic').forEach(element => {
+        element.setAttribute('data-tippy-theme', 'tactic');
+      });
+      let insts = tippy('.hl.lean .const.token, .hl.lean .keyword.token, .hl.lean .literal.token, .hl.lean .option.token, .hl.lean .var.token, .hl.lean .typed.token, .hl.lean .has-info, .hl.lean .tactic, .hl.lean .level-var, .hl.lean .level-const, .hl.lean .level-op, .hl.lean .sort', defaultTippyProps);
+  });
+}
+</script>
+    <script src="-verso-search/search-highlight.js" defer="defer"></script>
+    <link rel="stylesheet" href="/halcyonic-theme.css"></head>
+  <body>
+    <header>
+      <div class="header-logo-wrapper"></div>
+      <div class="header-title-wrapper">
+        <a href="" class="header-title"><h1>
+            A Formal Systems Ontology and Its Open Frontier</h1>
+          </a></div>
+      </header>
+    <label for="toggle-toc" id="toggle-toc-click"><span class="line line1"></span><span class="line line2"></span><span class="line line3"></span></label><div class="with-toc">
+      <div class="toc-backdrop" onclick="document.getElementById('toggle-toc-click')?.click()"></div>
+      <nav id="toc">
+        <input type="checkbox" id="toggle-toc"><div class="first">
+          <a href="" class="toc-title"><h1>
+              A Formal Systems Ontology and Its Open Frontier</h1>
+            </a><div class="split-tocs">
+            <div class="split-toc book">
+              <div class="title">
+                <label for="--verso-manual-toc-----bookRoot" class="toggle-split-toc"><input type="checkbox" class="toggle-split-toc" id="--verso-manual-toc-----bookRoot" checked="checked"></label><span class="">Table of Contents</span></div>
+              <table><tr class="current numbered"><td class="num">1.</td><td><a href="Three-Definitions___-One-Tradition/#A-Formal-Systems-Ontology-and-Its-Open-Frontier--Three-Definitions___-One-Tradition">Three Definitions, One Tradition</a></td></tr><tr class="numbered"><td class="num">2.</td><td><a href="The-Commuting-Triangle/#A-Formal-Systems-Ontology-and-Its-Open-Frontier--The-Commuting-Triangle">The Commuting Triangle</a></td></tr><tr class="numbered"><td class="num">3.</td><td><a href="The-Thermostat-___-Your-Example___-Three-Frameworks/#A-Formal-Systems-Ontology-and-Its-Open-Frontier--The-Thermostat-___-Your-Example___-Three-Frameworks">The Thermostat — Your Example, Three Frameworks</a></td></tr><tr class="numbered"><td class="num">4.</td><td><a href="The-Open-Frontier/#A-Formal-Systems-Ontology-and-Its-Open-Frontier--The-Open-Frontier">The Open Frontier</a></td></tr></table></div>
+            <div class="split-toc">
+              <div class="title">
+                <label for="--verso-manual-toc-A-Formal-Systems-Ontology-and-Its-Open-Frontier--Three-Definitions___-One-Tradition" class="toggle-split-toc"><input type="checkbox" class="toggle-split-toc" id="--verso-manual-toc-A-Formal-Systems-Ontology-and-Its-Open-Frontier--Three-Definitions___-One-Tradition" checked="checked"></label><span class="number">1.</span> <span class="current"><a href="Three-Definitions___-One-Tradition/#A-Formal-Systems-Ontology-and-Its-Open-Frontier--Three-Definitions___-One-Tradition">Three Definitions, One Tradition</a></span></div>
+              <table><tr class="numbered"><td class="num">1.1.</td><td><a href="Three-Definitions___-One-Tradition/#A-Formal-Systems-Ontology-and-Its-Open-Frontier--Three-Definitions___-One-Tradition--Klir___-S-___-_LPAR_T___-R_RPAR_">Klir: S = (T, R)</a></td></tr><tr class="numbered"><td class="num">1.2.</td><td><a href="Three-Definitions___-One-Tradition/#A-Formal-Systems-Ontology-and-Its-Open-Frontier--Three-Definitions___-One-Tradition--Bunge___-_LANGLE_C___-E___-S_RANGLE_">Bunge: ⟨C, E, S⟩</a></td></tr><tr class="numbered"><td class="num">1.3.</td><td><a href="Three-Definitions___-One-Tradition/#A-Formal-Systems-Ontology-and-Its-Open-Frontier--Three-Definitions___-One-Tradition--Mobus___-The-8-Tuple">Mobus: The 8-Tuple</a></td></tr></table></div>
+            </div>
+          </div>
+        <div class="last"></div>
+        </nav>
+      <main><div class="content-wrapper">
+          <nav class="prev-next-buttons">
+            <a class="local-button active" href="#" rel="prev" title=" A Formal Systems Ontology and Its Open Frontier"><span class="arrow">←</span><span class="where"> A Formal Systems Ontology and Its Open Frontier</span></a><a class="local-button active" href="The-Commuting-Triangle/#A-Formal-Systems-Ontology-and-Its-Open-Frontier--The-Commuting-Triangle" rel="next" title="2. The Commuting Triangle"><span class="where">2. The Commuting Triangle</span><span class="arrow">→</span></a></nav>
+          <section>
+            <h1>
+              1. Three Definitions, One Tradition<span class="permalink-widget inline"><a href="find/?domain=Verso.Genre.Manual.section&amp;name=A-Formal-Systems-Ontology-and-Its-Open-Frontier--Three-Definitions___-One-Tradition" title="Permalink">🔗</a></span></h1>
+            <p>
+              The general systems tradition contains several set-theoretic definitions of "system." They are not competing alternatives but <strong>layers</strong> of increasing ontological commitment. We present three — Klir, Bunge, and Mobus — each in its formal definition, with proper citations and the Lean 4 encoding.</p>
+            <section>
+              <h2 id="A-Formal-Systems-Ontology-and-Its-Open-Frontier--Three-Definitions___-One-Tradition--Klir___-S-___-_LPAR_T___-R_RPAR_">
+                1.1. Klir: S = (T, R)<span class="permalink-widget inline"><a href="find/?domain=Verso.Genre.Manual.section&amp;name=A-Formal-Systems-Ontology-and-Its-Open-Frontier--Three-Definitions___-One-Tradition--Klir___-S-___-_LPAR_T___-R_RPAR_" title="Permalink">🔗</a></span></h2>
+              <p>
+                <code class="math display">S = (T, R)</code></p>
+              <blockquote><p>
+                  A system <code class="math inline">S</code> is an ordered pair <code class="math inline">S = (T, R)</code>, where <code class="math inline">T</code> is a set of things (<strong>thinghood</strong>) and <code class="math inline">R</code> is a relation on <code class="math inline">T</code> (<strong>systemhood</strong>).</p>
+                </blockquote><blockquote></blockquote><blockquote><p>
+                  — Klir, <strong>Facets of Systems Science</strong>, 2001, Eq. 1.1</p>
+                </blockquote><p>
+                A thing becomes a system when you specify which of its parts are related. This is the simplest formal definition of system in the general systems tradition — and, as we will prove, the common mathematical ancestor of both Bunge and Mobus.</p>
+              <code class="hl lean block" data-lean-context="examples"><span class="has-info information"><span class="hover-container"><span class="hover-info messages"><code class="verso-message information"><span class="text"></span><span class="highlighted"><span class="inter-text"></span><span class="const token" data-binding="const-Systems.KlirSystem" data-verso-hover="0">KlirSystem</span><span class="inter-text"></span></span><span class="text"> : </span><span class="highlighted"><span class="inter-text"></span><span class="sort token" data-binding="sort-7243200735919010059" data-verso-hover="1">Type u_1</span><span class="inter-text"> </span><span class="unknown token" data-binding="">→</span><span class="inter-text"> </span><span class="sort token" data-binding="sort-7243200735919010059" data-verso-hover="1">Type u_1</span></span></code></span></span><span class="keyword token" data-binding="kw-occ-Lean.Parser.Command.check-2803">#check</span></span><span class="inter-text"> </span><span class="unknown token" data-binding="">@</span><span class="const token" data-binding="const-Systems.KlirSystem" data-verso-hover="0">KlirSystem</span><span class="inter-text">
+</span><span class="unknown token" data-binding=""></span></code><p>
+                The type is transparent: <code>things</code> is a set over an arbitrary carrier type <code>α</code>, and <code>relation</code> is a set of ordered pairs. No time, no state, no environment, no boundary. Just <code class="math inline">T</code> and <code class="math inline">R</code>.</p>
+              <code class="hl lean block" data-lean-context="examples"><span class="keyword token" data-binding="kw-occ-Lean.Parser.Command.example-3026">example</span><span class="inter-text"> </span><span class="unknown token" data-binding="">:</span><span class="inter-text"> </span><span class="const token" data-binding="const-Systems.KlirSystem" data-verso-hover="0">KlirSystem</span><span class="inter-text"> </span><span class="const token" data-binding="const-Nat" data-verso-hover="2">Nat</span><span class="inter-text"> </span><span class="unknown token" data-binding="">:=</span><span class="inter-text"> </span><span class="unknown token" data-binding="const-Systems.KlirSystem.mk" data-verso-hover="3">⟨</span><span class="unknown token" data-binding="">{</span><span class="typed token" data-binding="" data-verso-hover="4">1</span><span class="unknown token" data-binding="">,</span><span class="inter-text"> </span><span class="typed token" data-binding="" data-verso-hover="4">2</span><span class="unknown token" data-binding="">,</span><span class="inter-text"> </span><span class="typed token" data-binding="" data-verso-hover="4">3</span><span class="unknown token" data-binding="">}</span><span class="unknown token" data-binding="const-Systems.KlirSystem.mk" data-verso-hover="3">,</span><span class="inter-text"> </span><span class="unknown token" data-binding="">{</span><span class="unknown token" data-binding="">(</span><span class="typed token" data-binding="" data-verso-hover="4">1</span><span class="unknown token" data-binding="">,</span><span class="inter-text"> </span><span class="typed token" data-binding="" data-verso-hover="4">2</span><span class="unknown token" data-binding="">)</span><span class="unknown token" data-binding="">,</span><span class="inter-text"> </span><span class="unknown token" data-binding="">(</span><span class="typed token" data-binding="" data-verso-hover="4">2</span><span class="unknown token" data-binding="">,</span><span class="inter-text"> </span><span class="typed token" data-binding="" data-verso-hover="4">3</span><span class="unknown token" data-binding="">)</span><span class="unknown token" data-binding="">}</span><span class="unknown token" data-binding="const-Systems.KlirSystem.mk" data-verso-hover="3">⟩</span><span class="inter-text">
+</span><span class="unknown token" data-binding=""></span></code><p>
+                Three natural numbers, two ordered pairs. That is a system in Klir's sense. Everything else the systems tradition adds — environment, flows, boundaries, transforms — is elaboration on this seed.</p>
+              <p>
+                <strong>The thermostat as a Klir system.</strong> Three things (thermometer, controller, furnace) and four ordered pairs (room acts on thermometer, thermometer acts on controller, controller acts on furnace, furnace acts on room). The relation captures <strong>that</strong> things interact, not <strong>how</strong> or <strong>what kind</strong>.</p>
+              </section>
+            <section>
+              <h2 id="A-Formal-Systems-Ontology-and-Its-Open-Frontier--Three-Definitions___-One-Tradition--Bunge___-_LANGLE_C___-E___-S_RANGLE_">
+                1.2. Bunge: ⟨C, E, S⟩<span class="permalink-widget inline"><a href="find/?domain=Verso.Genre.Manual.section&amp;name=A-Formal-Systems-Ontology-and-Its-Open-Frontier--Three-Definitions___-One-Tradition--Bunge___-_LANGLE_C___-E___-S_RANGLE_" title="Permalink">🔗</a></span></h2>
+              <p>
+                <code class="math display">\sigma = \langle C(\sigma), E(\sigma), S(\sigma) \rangle</code></p>
+              <blockquote><p>
+                  Let <code class="math inline">T</code> be a nonempty set. Then the ordered triple <code class="math inline">\sigma = \langle C, E, S \rangle</code> is (or represents) a system over <code class="math inline">T</code> iff <code class="math inline">C</code> and <code class="math inline">E</code> are mutually disjoint subsets of <code class="math inline">T</code> (i.e. <code class="math inline">C \cap E = \emptyset</code>), and <code class="math inline">S</code> is a nonempty set of relations on the union of <code class="math inline">C</code> and <code class="math inline">E</code>.</p>
+                </blockquote><blockquote></blockquote><blockquote><p>
+                  — Bunge, <strong>Treatise on Basic Philosophy</strong> Vol. 4, 1979, Ch. 1</p>
+                </blockquote><p>
+                Bunge adds one primitive that Klir lacks: <strong>environment</strong>. A system exists <strong>within</strong> something, and that something is a first-class component of its description. Where Klir asks "what are the parts and how are they related?", Bunge asks "what is inside, what is outside, and how do they interact?"</p>
+              <p>
+                Three coherence constraints, enforced at the type level:</p>
+              <ol start="1">
+                <li>
+                  <p>
+                    <code class="math inline">C \cap E = \emptyset</code> — components and environment do not overlap</p>
+                  </li>
+                <li>
+                  <p>
+                    All relations in <code class="math inline">S</code> are defined on <code class="math inline">C \cup E</code> — no dangling references</p>
+                  </li>
+                <li>
+                  <p>
+                    At least two distinct components are bonded — otherwise it is a heap, not a system</p>
+                  </li>
+                </ol>
+              <code class="hl lean block" data-lean-context="examples"><span class="has-info information"><span class="hover-container"><span class="hover-info messages"><code class="verso-message information"><span class="text"></span><span class="highlighted"><span class="inter-text"></span><span class="const token" data-binding="const-Systems.ConcreteSystem" data-verso-hover="5">ConcreteSystem</span><span class="inter-text"></span></span><span class="text"> : </span><span class="highlighted"><span class="unknown token" data-binding="">(</span><span class="var token" data-binding="var-_pp_uniq.2" data-verso-hover="6">α</span><span class="inter-text"> </span><span class="unknown token" data-binding="">:</span><span class="inter-text"> </span><span class="sort token" data-binding="sort-7243200735919010059" data-verso-hover="1">Type u_1</span><span class="unknown token" data-binding="">)</span><span class="inter-text"> </span><span class="unknown token" data-binding="">→</span><span class="inter-text"> </span><span class="unknown token" data-binding="">[</span><span class="const token" data-binding="const-Systems.ActsOn" data-verso-hover="7">ActsOn</span><span class="inter-text"> </span><span class="var token" data-binding="var-_pp_uniq.2" data-verso-hover="6">α</span><span class="unknown token" data-binding="">]</span><span class="inter-text"> </span><span class="unknown token" data-binding="">→</span><span class="inter-text"> </span><span class="sort token" data-binding="sort-7243200735919010059" data-verso-hover="1">Type u_1</span></span></code></span></span><span class="keyword token" data-binding="kw-occ-Lean.Parser.Command.check-4628">#check</span></span><span class="inter-text"> </span><span class="unknown token" data-binding="">@</span><span class="const token" data-binding="const-Systems.ConcreteSystem" data-verso-hover="5">ConcreteSystem</span><span class="inter-text">
+</span><span class="unknown token" data-binding=""></span></code><p>
+                The <code>ActsOn</code> typeclass provides Bunge's action relation — <code>a ▷ b</code> means "a modifies b's trajectory." This is the primitive notion of bonding: causal influence between concrete things.</p>
+              <p>
+                <strong>A 47-year-old error.</strong> Bunge's Definition 1.6 states that the subsystem relation is <strong>"reflexive, asymmetric, and transitive."</strong> No relation can be both reflexive and asymmetric. Reflexivity gives <code class="math inline">x \leq x</code> for all <code class="math inline">x</code>; asymmetry requires <code class="math inline">x \leq y \implies \neg(y \leq x)</code> — substituting <code class="math inline">y = x</code> yields a contradiction. The compiler rejected the asymmetry claim. The correct property is <strong>antisymmetry</strong>: <code class="math inline">\sigma_1 \leq \sigma_2</code> and <code class="math inline">\sigma_2 \leq \sigma_1</code> implies their CES triples are equal. This error has been in print since 1979.</p>
+              <p>
+                <strong>Note on CESM.</strong> Later work (Bunge, <strong>Systemism</strong>, 2000) extends the triple to <code class="math inline">\langle C, E, S, M \rangle</code> adding mechanism. The 1979 <strong>Treatise</strong> uses the triple. The formalization encodes the 1979 definition; mechanism enters through Mobus's transforms <code class="math inline">\tau</code>.</p>
+              <p>
+                <strong>The thermostat as a Bunge system.</strong> Composition <code class="math inline">C</code> = {thermometer, controller, furnace}. Environment <code class="math inline">E</code> = {room, outsideAir}. Structure <code class="math inline">S</code> = the four causal bonds. A modeling decision: the room is environment because the thermostat acts <strong>on</strong> the room — the room is what the system is trying to regulate.</p>
+              </section>
+            <section>
+              <h2 id="A-Formal-Systems-Ontology-and-Its-Open-Frontier--Three-Definitions___-One-Tradition--Mobus___-The-8-Tuple">
+                1.3. Mobus: The 8-Tuple<span class="permalink-widget inline"><a href="find/?domain=Verso.Genre.Manual.section&amp;name=A-Formal-Systems-Ontology-and-Its-Open-Frontier--Three-Definitions___-One-Tradition--Mobus___-The-8-Tuple" title="Permalink">🔗</a></span></h2>
+              <p>
+                <code class="math display">S_{i,l} = \langle C, N, E, G, B, T, H, \Delta t \rangle_{i,l}</code></p>
+              <p>
+                Mobus elaborates Klir in a different direction from Bunge — toward engineering methodology. Where Bunge asks "what <strong>is</strong> a system?", Mobus asks "how do you <strong>describe</strong> one?" He cites Klir (2001) explicitly: <strong>"The development of this approach was inspired originally by Klir (2001)"</strong> (Ch. 4, p. 14).</p>
+              <p>
+                The 8-tuple fields:</p>
+              <ul>
+                <li>
+                  <p>
+                    <code class="math inline">C</code> — <strong>Components</strong>: the set of entities at level <code class="math inline">l</code></p>
+                  </li>
+                <li>
+                  <p>
+                    <code class="math inline">N = \langle C, L \rangle</code> — <strong>Internal network</strong>: directed flow graph among components, with capacity labels <code class="math inline">\kappa</code></p>
+                  </li>
+                <li>
+                  <p>
+                    <code class="math inline">E = \langle O, M \rangle</code> — <strong>Environment</strong>: discrete objects <code class="math inline">O</code> plus an opaque <strong>milieu</strong> <code class="math inline">M</code></p>
+                  </li>
+                <li>
+                  <p>
+                    <code class="math inline">G</code> — <strong>External flows</strong>: bipartite graph between <code class="math inline">O</code> and interface components</p>
+                  </li>
+                <li>
+                  <p>
+                    <code class="math inline">B = \langle P, I \rangle</code> — <strong>Boundary</strong>: properties <code class="math inline">P</code> plus interface components <code class="math inline">I \subseteq C</code></p>
+                  </li>
+                <li>
+                  <p>
+                    <code class="math inline">T</code> — <strong>Transforms</strong>: domain-specific processing functions</p>
+                  </li>
+                <li>
+                  <p>
+                    <code class="math inline">H</code> — <strong>History</strong>: stored knowledge / memory</p>
+                  </li>
+                <li>
+                  <p>
+                    <code class="math inline">\Delta t</code> — <strong>Time scale</strong>: temporal resolution</p>
+                  </li>
+                </ul>
+              <code class="hl lean block" data-lean-context="examples"><span class="has-info information"><span class="hover-container"><span class="hover-info messages"><code class="verso-message information"><span class="text"></span><span class="highlighted"><span class="inter-text"></span><span class="const token" data-binding="const-Systems.MobusSystem" data-verso-hover="8">MobusSystem</span><span class="inter-text"></span></span><span class="text"> : </span><span class="highlighted"><span class="inter-text"></span><span class="sort token" data-binding="sort-7243200735919010059" data-verso-hover="1">Type u_1</span><span class="inter-text"> </span><span class="unknown token" data-binding="">→</span><span class="inter-text">
+  </span><span class="sort token" data-binding="sort-7243200735919010059" data-verso-hover="1">Type u_2</span><span class="inter-text"> </span><span class="unknown token" data-binding="">→</span><span class="inter-text">
+    </span><span class="sort token" data-binding="sort-7243200735919010059" data-verso-hover="1">Type u_3</span><span class="inter-text"> </span><span class="unknown token" data-binding="">→</span><span class="inter-text">
+      </span><span class="sort token" data-binding="sort-7243200735919010059" data-verso-hover="1">Type u_4</span><span class="inter-text"> </span><span class="unknown token" data-binding="">→</span><span class="inter-text"> </span><span class="sort token" data-binding="sort-7243200735919010059" data-verso-hover="1">Type u_5</span><span class="inter-text"> </span><span class="unknown token" data-binding="">→</span><span class="inter-text"> </span><span class="sort token" data-binding="sort-7243200735919010059" data-verso-hover="1">Type u_6</span><span class="inter-text"> </span><span class="unknown token" data-binding="">→</span><span class="inter-text"> </span><span class="sort token" data-binding="sort-7243200735919010059" data-verso-hover="1">Type u_7</span><span class="inter-text"> </span><span class="unknown token" data-binding="">→</span><span class="inter-text"> </span><span class="sort token" data-binding="sort-7243200735919010059" data-verso-hover="1">Type (max (max (max (max (max (max u_1 u_2) u_3) u_4) u_5) u_6) u_7)</span></span></code></span></span><span class="keyword token" data-binding="kw-occ-Lean.Parser.Command.check-7044">#check</span></span><span class="inter-text"> </span><span class="unknown token" data-binding="">@</span><span class="const token" data-binding="const-Systems.MobusSystem" data-verso-hover="8">MobusSystem</span><span class="inter-text">
+</span><span class="unknown token" data-binding=""></span></code><p>
+                Seven type parameters. Five coherence constraints enforced by the compiler:</p>
+              <ol start="1">
+                <li>
+                  <p>
+                    Internal network nodes <code class="math inline">=</code> components</p>
+                  </li>
+                <li>
+                  <p>
+                    <code class="math inline">C \cap O = \emptyset</code> — disjointness (inherited from Bunge)</p>
+                  </li>
+                <li>
+                  <p>
+                    <code class="math inline">I \subseteq C</code> — interfaces are components</p>
+                  </li>
+                <li>
+                  <p>
+                    External flows are <strong>bipartite</strong> between <code class="math inline">O</code> and <code class="math inline">I</code></p>
+                  </li>
+                <li>
+                  <p>
+                    External flow nodes <code class="math inline">\subseteq O \cup I</code></p>
+                  </li>
+                </ol>
+              <p>
+                The bipartite constraint alone <strong>implies</strong> boundary completeness: all interaction between system and environment passes through the boundary. This is derived, not axiomatized.</p>
+              <p>
+                The first five fields (<code class="math inline">C, N, E, G, B</code>) are structurally active — they participate in proofs. The last three (<code class="math inline">T, H, \Delta t</code>) are parametric — carried data with no structural role in the ontology. This is by design: transforms are domain-specific, history is implementation-specific, and time scale is observational. The ontology captures <strong>what a system has</strong>, not <strong>what it does</strong>. That distinction will matter.</p>
+              <p>
+                <strong>The thermostat as a Mobus system.</strong> Everything from Bunge, plus: internal flows have capacity labels (millivolts from thermometer, binary commands from controller, BTUs from furnace). The boundary identifies thermometer and furnace as interface components. outsideAir enters through the milieu <code class="math inline">M</code> — ambient thermal effects, not a point-source flow. Transforms <code class="math inline">\tau</code> = <code>Unit</code> — we have no formal theory of what the controller <strong>does</strong>. That absence is the gap this document is building toward.</p>
+              <code class="hl lean block" data-lean-context="examples"><span class="has-info information"><span class="hover-container"><span class="hover-info messages"><code class="verso-message information"><span class="text"></span><span class="highlighted"><span class="inter-text"></span><span class="const token" data-binding="const-Systems.Examples.thermostatMobus" data-verso-hover="9">Systems.Examples.thermostatMobus</span><span class="inter-text"> </span><span class="unknown token" data-binding="">:</span><span class="inter-text"> </span><span class="const token" data-binding="const-Systems.MobusSystem" data-verso-hover="8">MobusSystem</span><span class="inter-text"> </span><span class="const token" data-binding="const-Systems.Examples.Entity" data-verso-hover="10">Entity</span><span class="inter-text"> </span><span class="const token" data-binding="const-Unit" data-verso-hover="11">Unit</span><span class="inter-text"> </span><span class="const token" data-binding="const-Unit" data-verso-hover="11">Unit</span><span class="inter-text"> </span><span class="const token" data-binding="const-Unit" data-verso-hover="11">Unit</span><span class="inter-text"> </span><span class="const token" data-binding="const-Unit" data-verso-hover="11">Unit</span><span class="inter-text"> </span><span class="const token" data-binding="const-Unit" data-verso-hover="11">Unit</span><span class="inter-text"> </span><span class="const token" data-binding="const-Unit" data-verso-hover="11">Unit</span></span></code></span></span><span class="keyword token" data-binding="kw-occ-Lean.Parser.Command.check-8511">#check</span></span><span class="inter-text"> </span><span class="const token" data-binding="const-Systems.Examples.thermostatMobus" data-verso-hover="9">thermostatMobus</span><span class="inter-text">
+</span><span class="unknown token" data-binding=""></span></code></section>
+            </section>
+          <nav class="prev-next-buttons">
+            <a class="local-button active" href="#" rel="prev" title=" A Formal Systems Ontology and Its Open Frontier"><span class="arrow">←</span><span class="where"> A Formal Systems Ontology and Its Open Frontier</span></a><a class="local-button active" href="The-Commuting-Triangle/#A-Formal-Systems-Ontology-and-Its-Open-Frontier--The-Commuting-Triangle" rel="next" title="2. The Commuting Triangle"><span class="where">2. The Commuting Triangle</span><span class="arrow">→</span></a></nav>
+          </div>
+        </main></div>
+    </body>
+  </html>
+

@@ -1,0 +1,1 @@
+window.docContents[245].resolve({"/The-Open-Frontier/#A-Formal-Systems-Ontology-and-Its-Open-Frontier--The-Open-Frontier":{"contents":"\n\n\n\n\n\n\n\n","context":"A Formal Systems Ontology and Its Open Frontier","header":"4. The Open Frontier","id":"/The-Open-Frontier/#A-Formal-Systems-Ontology-and-Its-Open-Frontier--The-Open-Frontier"}});
